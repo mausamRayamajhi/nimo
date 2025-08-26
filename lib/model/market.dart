@@ -146,10 +146,10 @@ class Roi extends Equatable {
   List<Object?> get props => [times, currency, percentage];
 }
 
-class MarketList {
+class MarketList extends Equatable {
   final List<Market> market;
 
-  MarketList({required this.market});
+  const MarketList({required this.market});
 
   // Factory constructor to create a CoinList from a JSON list.
   factory MarketList.fromJsonList(List<dynamic> jsonList) {
@@ -163,4 +163,6 @@ class MarketList {
     }).toList();
     return MarketList(market: markets);
   }
+  @override
+  List<Object> get props => [market];
 }

@@ -11,10 +11,6 @@ class CoinRepository {
 
   /// Fetches a list of coins from the market for a specified currency.
   Future<Coin> fetchCoin({required String id}) async {
-    if (_client == null) {
-      throw Exception('CryptoHttpClient is not initialized.');
-    }
-
     // final Map<String, String> parameters = {"vs_currency": currency.toString()};
 
     // The generic type is changed to List<Coin> to match the API response.
@@ -28,7 +24,7 @@ class CoinRepository {
 
     try {
       // The execute method now returns a Future<List<Coin>>.
-      final response = await _client.execute(requestDefinition);
+      final response = await _client!.execute(requestDefinition);
       return response;
     } on FailureResponse {
       rethrow;
